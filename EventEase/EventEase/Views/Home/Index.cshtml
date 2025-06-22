@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<h2 class="mb-4">Welcome to EventEase</h2>
+
+<nav>
+    <ul class="list-group">
+        <li class="list-group-item">
+            <a href="@Url.Action("Index", "Venues")" class="text-decoration-none">Manage Venues</a>
+        </li>
+        <li class="list-group-item">
+            <a href="@Url.Action("Index", "Events")" class="text-decoration-none">Manage Events</a>
+        </li>
+        <li class="list-group-item">
+            <a href="@Url.Action("Index", "Bookings")" class="text-decoration-none">Manage Bookings</a>
+        </li>
+    </ul>
+</nav>

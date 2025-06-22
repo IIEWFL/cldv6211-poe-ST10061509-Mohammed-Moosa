@@ -1,0 +1,76 @@
+﻿@* 
+Code Attribution for Views:
+1. How to Use ASP.NET Core Razor Pages Forms with Model Binding — Rick Strahl — https://stackoverflow.com/questions/46781303/asp-net-core-razor-pages-form-post
+2. How to Upload Files Using Razor Pages with IFormFile — Serge — https://stackoverflow.com/questions/45854210/asp-net-core-mvc-image-upload-and-display
+3. Displaying Validation Messages in ASP.NET Core MVC Views — rynop — https://stackoverflow.com/questions/42083954/how-to-use-data-annotations-for-model-validation-in-asp-net-core
+4. How to Use Dropdown Lists and Foreign Keys in ASP.NET Core Views — Smit Patel — https://stackoverflow.com/questions/39422550/ef-core-one-to-many-relationship-example
+5. Passing Image URLs and Displaying from Azure Blob Storage in Razor — Gaurav Mantri — https://stackoverflow.com/questions/39282187/getting-sas-token-url-for-azure-blob-storage
+*@
+
+
+@model IEnumerable<EventEase.Models.Booking>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Bookings</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookingDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsBooked)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VenueId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EventId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContactEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookingDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsBooked)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VenueId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventId)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.BookingId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.BookingId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.BookingId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

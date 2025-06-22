@@ -1,0 +1,67 @@
+﻿@model EventEase.Models.Venue
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit Venue</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Location" class="control-label"></label>
+                <input asp-for="Location" class="form-control" />
+                <span asp-validation-for="Location" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Capacity" class="control-label"></label>
+                <input asp-for="Capacity" class="form-control" />
+                <span asp-validation-for="Capacity" class="text-danger"></span>
+            </div>
+
+            <div class="form-group form-check">
+                <input asp-for="IsAvailable" class="form-check-input" />
+                <label asp-for="IsAvailable" class="form-check-label"></label>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Upload New Venue Image (optional)</label>
+                <input type="file" name="imageFile" class="form-control" />
+            </div>
+
+            @if (!string.IsNullOrEmpty(Model.ImageURL))
+            {
+                <div class="mt-2">
+                    <label>Current Image:</label>
+                    <img src="@Url.Action("GetImageSasUrl", "Venues", new { blobName = Model.ImageURL })" alt="Venue Image" style="max-width:100%; height:auto;" />
+                </div>
+            }
+
+            <div class="form-group mt-3">
+                <input type="submit" value="Save Changes" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
